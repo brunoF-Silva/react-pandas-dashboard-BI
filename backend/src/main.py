@@ -21,7 +21,7 @@ def read_root():
     return {'message': 'Rodando'}
 
 
-@app.get('/api/kips', status_code=HTTPStatus.OK)
+@app.get('/api/kpis', status_code=HTTPStatus.OK)
 def read_kpis():
 
     solicitacoes_kpi = SolicitacoesKpi.calculate(df, 2026)
@@ -38,29 +38,29 @@ def read_goals(id_goal: int):
 
     if(id_goal == 1):
 
-        meta_anual_min = Goal(40, 'equal_to', 'Total de itens solicitados deve ser igual a 40')
-        meta_anual_esperada = Goal(50, 'greater_than', 'Total de itens solicitados deve ser igual a 50')
-        meta_anual_ideal = Goal(60, 'greater_than', 'Total de itens solicitados deve ser maior que 60')
+        meta_anual_min = Goal(1, 40, 'equal_to', 'Total de itens solicitados deve ser igual a 40')
+        meta_anual_esperada = Goal(2, 50, 'greater_than', 'Total de itens solicitados deve ser maior que 50')
+        meta_anual_ideal = Goal(3, 60, 'greater_than', 'Total de itens solicitados deve ser maior que 60')
 
-        meta_anual_min.evaluate(cur_kpi['cur_value'])
-        meta_anual_esperada.evaluate(cur_kpi['cur_value'])
-        meta_anual_ideal.evaluate(cur_kpi['cur_value'])
+        meta_anual_min = meta_anual_min.evaluate(cur_kpi['cur_value'])
+        meta_anual_esperada = meta_anual_esperada.evaluate(cur_kpi['cur_value'])
+        meta_anual_ideal = meta_anual_ideal.evaluate(cur_kpi['cur_value'])
 
 
     elif(id_goal ==2):
 
-        meta_anual_min = Goal(50, 'equal_to', 'Total de itens Faturados deve ser igual a 50')
-        meta_anual_esperada = Goal(70, 'greater_than', 'Total de itens Faturados deve ser igual a 70')
-        meta_anual_ideal = Goal(80, 'greater_than', 'Total de itens Faturados deve ser maior que 80')
+        meta_anual_min = Goal(1, 50, 'equals', 'Total de itens Faturados deve ser igual a 50')
+        meta_anual_esperada = Goal(2, 70, 'greater_than', 'Total de itens Faturados deve ser maior que 70')
+        meta_anual_ideal = Goal(3, 80, 'greater_than', 'Total de itens Faturados deve ser maior que 80')
 
-        meta_anual_min.evaluate(cur_kpi['cur_value'])
-        meta_anual_esperada.evaluate(cur_kpi['cur_value'])
-        meta_anual_ideal.evaluate(cur_kpi['cur_value'])
+        meta_anual_min = meta_anual_min.evaluate(cur_kpi['cur_value'])
+        meta_anual_esperada = meta_anual_esperada.evaluate(cur_kpi['cur_value'])
+        meta_anual_ideal = meta_anual_ideal.evaluate(cur_kpi['cur_value'])
     else:
-        meta_anual_min = {}
-        meta_anual_esperada = {}
-        meta_anual_ideal = {}      
+        meta_anual_min = meta_anual_min = {}
+        meta_anual_esperada = meta_anual_esperada = {}
+        meta_anual_ideal = meta_anual_ideal = {}      
 
     return {
-        'goals': [meta_anual_min, meta_anual_esperada, meta_anual_ideal]
+        'goals': [meta_anual_min, meta_anual_esperada, meta_anual_ideal,]
     }

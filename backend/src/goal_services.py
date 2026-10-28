@@ -1,7 +1,8 @@
 from typing import Dict, Any
 
 class Goal:
-    def __init__(self, target_value: float, operator: str, description: str):
+    def __init__(self, id: int, target_value: float, operator: str, description: str):
+        self.id = id
         self.target_value = target_value
         self.operator = operator
         self.description = description
@@ -17,6 +18,7 @@ class Goal:
             is_met = False
 
         return {
+            'id': self.id,
             'target_value': self.target_value,
             'description': self.description,
             'is_met': int(is_met)

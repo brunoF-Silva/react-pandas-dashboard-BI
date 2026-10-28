@@ -1,0 +1,18 @@
+@import 'tailwindcss';
+
+:root{
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(26, 4, 66);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+@theme {
+  --color-pri: #e0c02d;
+  --color-green: #89c756;
+  --color-red: #bf5836;
+}
